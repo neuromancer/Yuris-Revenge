@@ -82,6 +82,11 @@ namespace OpenRA.Mods.YR.Traits.Conditions
                     }
                     break;
                 case WeaponType.Single:
+                    if (target.Actor == null)
+                    {
+                        return;
+                    }
+
                     var thisVictimExternal = target.Actor.TraitsImplementing<ExternalCondition>()
                             .FirstOrDefault(t => t.Info.Condition == info.Condition && t.CanGrantCondition(target.Actor, self));
 

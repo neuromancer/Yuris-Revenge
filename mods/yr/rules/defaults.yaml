@@ -270,36 +270,18 @@
 	Berserkable:
 		RequiresCondition: chaosgasability
 		
-^Diskdrainshutdownpowerable:
-	TimedConditionBar:
-		Condition: diskdrainability
-	ExternalCondition@DISKDRAINABILITY:
-		Condition: diskdrainability
-	ShutdownPower:
-		RequiresCondition: diskdrainability
-		
-^Tractable:
-	Tractable:
-		TractingCondition: tracting
-		AirborneCondition: airborne
-		MinAirborneAltitude: 128
-		RequiresCondition: !invulnerability && tracting
-	RejectsOrders@tracting:
-		RequiresCondition: tracting
-	Targetable@AIRBORNE:
-		TargetTypes: Air, Tractable
-		RequiresCondition: airborne
-	WithTractionShadow:
-		Offset: 43, 128, 0
-		ZOffset: -129
-		RequiresCondition: tracting
-		
-^Markerable:
-	WithColoredOverlay@marker:
-		Palette: marker
-		RequiresCondition: markerability
-	ExternalCondition@MARKERABILITY:
-		Condition: markerability
+^VirusCloudGeneratable:
+	ExternalCondition@VIRUSATTACK:
+		Condition: virusattack
+	GenerateParticle:
+		Image: explosion
+		Sequence: viruscloud
+		SequenceDura: 19
+		Palette: effect
+		Dura: 20
+		Damage: 5
+		WeaponName: VirtusGas
+		RequiresCondition: virusattack
 
 ^ChronoDisable:
 	TimedConditionBar@ChronoDisable:
@@ -396,7 +378,6 @@
 	Inherits@2: ^SpriteActor
 	Inherits@3: ^IronCurtainable
 	Inherits@4: ^ForceShieldable
-	Inherits@5: ^Markerable
 	Inherits@shape: ^1x1Shape
 	-DrawLineToTarget:
 	OwnerLostAction:
@@ -492,21 +473,6 @@
 		Name: Civilian Building
 	EditorTilesetFilter:
 		Categories: Civilian building
-		
-^GarrisonableBuilding:
-	Inherits: ^CivBuilding
-	BunkerCargo:
-		Types: Infantry
-		MaxWeight: 10
-		PipCount: 10
-		GrantAccepter: garrisonable-building
-		ChangeOwnerWhenGarrison: true
-		StructureGarrisonedNotification: StructureGarrisoned
-		StructureAbandonedNotification: StructureAbandoned
-	AttackBunkered:
-		PortOffsets: 384,0,128, 224,-341,128, -224,-341,128, -384,0,128, -224,341,128, 224,341,128
-		PortYaws: 0, 176, 341, 512, 682, 853
-		PortCones: 88, 88, 88, 88, 88, 88
 
 ^Rubble:
 	Inherits@1: ^SpriteActor
@@ -640,6 +606,7 @@
 	Inherits@3: ^GainsExperience
 	Inherits@4: ^ChronoDisable
 	Inherits@5: ^CrateStatModifiers
+	Inherits@6: ^VirusCloudGeneratable
 	Health:
 	OwnerLostAction:
 		Action: Kill
@@ -695,7 +662,6 @@
 		Voice: Move
 		CargoType: Infantry
 		GrantBunkerCondition: bunkered
-		Accepter: nabnkr
 	HiddenUnderFog:
 	ActorLostNotification:
 	ProximityCaptor:
@@ -818,7 +784,6 @@
 		IdleSequences: idle1
 	EditorTilesetFilter:
 		Categories: Civilian infantry
-	-BunkerPassenger:
 
 ^Animal:
 	Inherits: ^Infantry
@@ -869,7 +834,6 @@
 	Inherits@3: ^IronCurtainable
 	Inherits@4: ^ChronoDisable
 	Inherits@5: ^CrateStatModifiers
-	Inherits@6: ^Tractable
 	OwnerLostAction:
 		Action: Kill
 	Mobile:
@@ -895,7 +859,6 @@
 		CargoType: Vehicle
 		Weight: 3
 		GrantBunkerCondition: bunkered
-		Accepter: natbnk
 	HiddenUnderFog:
 	WithTextControlGroupDecoration:
 	ActorLostNotification:

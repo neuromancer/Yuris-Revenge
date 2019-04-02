@@ -365,13 +365,13 @@ yatech:
 	damaged-idle: yatech
 		Start: 1
 		ShadowStart: 4
-	idle-critical: yatech_a
-		Length: 32
+	critical-idle: yatech_a
+		Length: 31
 		ShadowStart: 64
-	damaged-idle-critical: yatech_a
-		Start: 32
-		Length: 32
-		ShadowStart: 96
+	damaged-critical-idle: yatech_a
+		Start: 31
+		Length: 31
+		ShadowStart: 64
 	make: yatechmk
 		Length: 25
 		ShadowStart: 25
@@ -502,17 +502,16 @@ yapsyt:
 	damaged-idle-top: yapsyt_a
 		Start: 52
 		Length: 26
-		ShadowStart: 78#Actual frame count is 155, but ORA can only read 0~103
+		ShadowStart: 78
 	idle-full: yapsyt_b
 		Length: 26
 		ShadowStart: 26
 	damaged-idle-full: yapsyt_a
-		Start: 26
+		Start: 52
 		Length: 26
-		ShadowStart: 78#Actual frame count is 155, but ORA can only read 0~103
+		ShadowStart: 78
 	muzzle: yuricntl
 		Length: *
-		UseTilesetCode: false
 	make: yapsytmk
 		Length: 31
 		ShadowStart: 31

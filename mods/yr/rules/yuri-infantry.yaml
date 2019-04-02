@@ -22,7 +22,7 @@ init:
 	Health:
 		HP: 100
 	Mobile:
-		Speed: 60
+		Speed: 40
 	Passenger:
 		PipType: Green
 	RevealsShroud:
@@ -40,11 +40,6 @@ init:
 	WithInfantryBody
 		DefaultAttackSequence: shoot
 	Bunkerable:
-	BunkerPassenger:
-		Voice: Move
-		CargoType: Infantry
-		GrantBunkerCondition: bunkered
-		Accepter: nabnkr, bfrt, garrisonable-building
 		
 yengineer:
 	Inherits: ^Infantry
@@ -65,7 +60,7 @@ yengineer:
 	Health:
 		HP: 75
 	Mobile:
-		Speed: 60
+		Speed: 40
 	DeliversCash:
 		Payload: 250
 		PlayerExperience: 25
@@ -115,7 +110,7 @@ brute:
 	Health:
 		HP: 200
 	Mobile:
-		Speed: 90
+		Speed: 60
 	Passenger:
 		PipType: Green
 	RevealsShroud:
@@ -128,18 +123,11 @@ brute:
 	Armament@elite:
 		Weapon: PunchE
 		RequiresCondition: rank-elite
-	Armament@second:
-		Weapon: Smash
-		RequiresCondition: !rank-elite
-	Armament@second-elite:
-		Weapon: SmashE
-		RequiresCondition: rank-elite
 	Voiced:
 		VoiceSet: BruteVoice
 	WithInfantryBody
 		DefaultAttackSequence: shoot
 	-Crushable:
-	-BunkerPassenger:
 
 virus:
 	Inherits: ^Infantry
@@ -165,7 +153,7 @@ virus:
 	Health:
 		HP: 100
 	Mobile:
-		Speed: 60
+		Speed: 40
 	Passenger:
 		PipType: Green
 	RevealsShroud:
@@ -182,14 +170,18 @@ virus:
 		VoiceSet: VirusVoice
 	WithInfantryBody
 		DefaultAttackSequence: shoot
-	BunkerPassenger:
-		Voice: Move
-		CargoType: Infantry
-		GrantBunkerCondition: bunkered
-		Accepter: bfrt
+	GrantExternalConditionWeapon@virusgas:
+		ArmamentType: Single
+		DamageRangeType: Target
+		Condition: virusattack
+		EffectDuration: 1
         
 slav:
 	Inherits: ^Infantry
+	Buildable:
+		BuildPaletteOrder: 20
+		Prerequisites: ~cannotbetrained
+		Description: Work for Yuri
 	Valued:
 		Cost: 700
 	Tooltip:
@@ -207,7 +199,7 @@ slav:
 	Health:
 		HP: 100
 	Mobile:
-		Speed: 45
+		Speed: 50
 	Passenger:
 		PipType: Green
 	RevealsShroud:
@@ -227,7 +219,6 @@ slav:
 		OnMasterKilled: Free
 		OnMasterChangeOwner: Free
 		FreeCondition: freed
-	-BunkerPassenger:
 
 yuri:
 	Inherits: ^Infantry
@@ -306,11 +297,6 @@ yuri:
 	AutoTargetPriority@DEFAULT:
 		Types: MindControl
 		RequiresCondition: !controlling
-	BunkerPassenger:
-		Voice: Move
-		CargoType: Infantry
-		GrantBunkerCondition: bunkered
-		Accepter: bfrt
 		
 yuripr:
 	Inherits: ^Infantry
@@ -339,7 +325,7 @@ yuripr:
 	Health:
 		HP: 150
 	Mobile:
-		Speed: 90
+		Speed: 60
 		RequiresCondition: !deployed && !deploying && !chronodisable
 	RevealsShroud:
 		Range: 12c0
@@ -391,11 +377,6 @@ yuripr:
 		Types: MindControl
 		RequiresCondition: !controlling
 	-Crushable:
-	BunkerPassenger:
-		Voice: Move
-		CargoType: Infantry
-		GrantBunkerCondition: bunkered
-		Accepter: bfrt
 
 julia:
 	Inherits: ^Infantry
@@ -404,7 +385,7 @@ julia:
 		Queue: Infantry
 		Prerequisites: ~missiononlyunit
 		BuildPaletteOrder: 20
-		Description: Yuri's Elite Sniper.\n Can kill crew of enemy vehicle effectively.\n Can hide herself but will show up when attack\n Can Infect the genetic virus to enemy soldiers\n make them become powerful brute which obey Yuri forever.
+		Description: Yuri's Elite Sniper.\n Can kill crew of enemy vehicle effectively.\n Can Infect the genetic virus to enemy soldiers\n make them become powerful brute which obey Yuri forever.
 		BuildLimit: 1
 	RenderSprites:
 		Image: Virus
@@ -445,13 +426,3 @@ julia:
 	WithInfantryBody
 		DefaultAttackSequence: shoot
 	-Crushable:
-	BunkerPassenger:
-		Voice: Move
-		CargoType: Infantry
-		GrantBunkerCondition: bunkered
-		Accepter: bfrt
-	Variety:
-		IsPlayerPalette: true
-		VarietyCondition: varing
-	Targetable: 
-		RequiresCondition: !varing

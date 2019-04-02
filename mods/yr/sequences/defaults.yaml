@@ -35,10 +35,10 @@
 		Tick: 80
 	die7: virusd
 		Length: *
-		Tick: 80
+		Tick: 50
 	die8: brutdie
 		Length: *
-		Tick: 80
+		Tick: 50
 	die9: gendeath
 		Length: *
 		Tick: 80

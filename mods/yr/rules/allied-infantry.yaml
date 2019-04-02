@@ -205,6 +205,7 @@ e1:
 		CargoType: Infantry
 		GrantBunkerCondition: bunkered
 		Accepter: nabnkr, bfrt, garrisonable-building
+	AIDeployHelper:
 
 ggi:
 	Inherits@1: ^Infantry
@@ -312,6 +313,7 @@ ggi:
 		GrantBunkerCondition: bunkered
 		Accepter: nabnkr, bfrt, garrisonable-building
 		Armaments: deployed
+	AIDeployHelper:
 
 snipe:
 	Inherits: ^Infantry

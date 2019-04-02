@@ -1,3 +1,51 @@
+viruscloud:
+	Inherits: ^Aircraft
+	Inherits@1: ^AutoTargetAllAssaultMove
+	-Selectable:
+	-SelectionDecorations:
+	-UpdatesPlayerStatistics:
+	-ActorLostNotification:
+	-AppearsOnRadar:
+	Valued:
+		Cost: 0
+	Aircraft:
+		CruiseAltitude: 0
+		TurnSpeed: 6
+		Repulsable: false
+		AltitudeVelocity: 400
+		Speed: 15
+		MoveIntoShroud: true
+	-Targetable@airborne:
+	-Targetable@ground:
+	Health:
+		HP: 100
+	SelfHealing:
+		Step: -1
+		Delay: 25
+		HealIfBelow: 200
+	AttackPlane:
+		FacingTolerance: 20
+		Voice: Attack
+	WithDeathAnimation:
+		UseDeathTypeSuffix: False
+		DeathSequencePalette: effect
+		DeathPaletteIsPlayerPalette: false
+	RejectsOrders:
+	RenderSprites:
+		Image: viruscloud
+		Palette: effect
+	BodyOrientation:
+		QuantizedFacings: 32
+	AttackWander:
+	WithDeathAnimation:
+		DeathSequence: die
+		UseDeathTypeSuffix: false
+	Interactable:
+	Explodes:
+		Weapon: VirusCloudDamage
+		Chance: 75
+	HitShape:
+	
 shad:
 	Inherits: ^Aircraft
 	Inherits@AUTOTARGET: ^AutoTargetGroundAssaultMove
